@@ -1,17 +1,95 @@
-﻿@{
+﻿@using DAL.Models
+@{
     ViewBag.Title = "Home Page";
+    List<Product> products = ViewBag.Products;
 }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Задание</h2>
-        <p>
-            Напишите веб-приложение на ASP.NET MVC 5 для работы с таблицами в MSSQL. Структура таблицы на Ваш вкус (как вариант таблица клиентов и таблица заказов 1-N )‚ представление с клиентами должно поддерживать пейджинг, обязательно чтобы в них было хоть одно поле-справочник с возможностью динамического добавления данных через модальное CRUD окно и одно поле для числа с фиксированной запятой, ввод и отображение числа с маской разделения на классы (12 345,00).
-        </p>
+<div class="panel-group">
+    <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel-heading h2">
+            <a data-toggle="collapse" href="#exerciseTextPanel" style="color:#333333; ">Задание</a>
         </div>
-        <div class="col-md-4">
-            <p>
-                Особенность - одностраничный интерфейс (ввод информации по заказам происходит не перегружая представление с клиентами, после занесения заказа в клиентах динамически меняем какое-нибудь поле (сумма заказов)), основное представление должно загружаться динамически (AJAX ом при помощи jQuery)‚ а в качестве ORM должен использоваться EF, можно использовать Bootstrap.
-            </p>
+        <div class="panel-collapse collapse" id="exerciseTextPanel">
+            <div class="panel-body">
+                <div class="col-md-4">
+                    <p>
+                        Напишите веб-приложение на ASP.NET MVC 5 для работы с таблицами в MSSQL. Структура таблицы на Ваш вкус (как вариант таблица клиентов и таблица заказов 1-N )‚ представление с клиентами должно поддерживать пейджинг, обязательно чтобы в них было хоть одно поле-справочник с возможностью динамического добавления данных через модальное CRUD окно и одно поле для числа с фиксированной запятой, ввод и отображение числа с маской разделения на классы (12 345,00).
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        Особенность - одностраничный интерфейс (ввод информации по заказам происходит не перегружая представление с клиентами, после занесения заказа в клиентах динамически меняем какое-нибудь поле (сумма заказов)), основное представление должно загружаться динамически (AJAX ом при помощи jQuery)‚ а в качестве ORM должен использоваться EF, можно использовать Bootstrap.
+                    </p>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading h2">
+            <a data-toggle="collapse" href="#iss1Panel" style="color:#333333;">Iss1 (Модель)</a>
+        </div>
+        <div class="panel-collapse collapse in" id="iss1Panel">
+            <div class="panel-body">
+                <div class="col-md-4">
+                    <b>Постановка задачи</b>
+                    <br />
+                    Создать слой доступа к данным.
+                    <br />
+                    Из задачи:
+                    <br />
+                    Структура таблицы на Ваш вкус (как вариант таблица клиентов и таблица заказов 1-N ).
+                </div>
+
+                <div class="col-md-4">
+                    <b>Решение</b>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Создан проект DAL (Data Access Layer)
+                        </li>
+                        <li class="list-group-item">
+                            Установлен пакет EF.
+                        </li>
+                        <li class="list-group-item">
+                            Созданы модели Товара (Product), Клиента (Client), Заказа (Order) и Части заказа (OrderUnit).
+                        </li>
+                        <li class="list-group-item">
+                            Созданы классы контекста (Context) и инициализатора (Initializer). Initializer устанавливается через Global.asax
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <b>Мини-тест</b>
+                    <br />
+                    Просто вывод автосозданных в инициализаторе продуктов.
+                    <table class="table-bordered text-center">
+
+                        <tr>
+                            <th>
+                                Наименование
+                            </th>
+                            <th>
+                                Стоимость
+                            </th>
+                        </tr>
+
+                        @foreach (var p in products)
+                        {
+                            <tr>
+                                <td>
+                                    @p.Name
+                                </td>
+                                <td>
+                                    @p.Price
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
