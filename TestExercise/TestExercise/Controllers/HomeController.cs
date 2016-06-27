@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using DAL.Models;
 
 namespace TestExercise.Controllers
 {
@@ -6,6 +9,10 @@ namespace TestExercise.Controllers
     {
         public ActionResult Index()
         {
+            using (var ctx = new Context())
+            {
+                ViewBag.Products = ctx.Products.ToList();
+            }
             return View();
         }
     }
