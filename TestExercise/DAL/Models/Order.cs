@@ -6,7 +6,7 @@ namespace DAL.Models
     {
         public int OrderId { get; set; }
         public int ClientId { get; set; }
-        public Client Client { get; set; }
-        public virtual ICollection<OrderUnit> OrderUnits { get; set; }
+        public virtual ICollection<OrderUnit> OrderUnit { get; set; }
+
     }
 }
