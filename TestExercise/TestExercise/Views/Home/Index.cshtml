@@ -3,7 +3,10 @@
     ViewBag.Title = "Home Page";
     List<Product> products = ViewBag.Products;
 }
-
+@section Head
+{
+    <script src="~/Scripts/clients.js"></script>
+}
 <div class="panel-group">
     <div class="panel panel-default" style="margin-top: 20px;">
         <div class="panel-heading h2">
@@ -76,14 +79,14 @@
 
                         @foreach (var p in products)
                         {
-                            <tr>
-                                <td>
-                                    @p.Name
-                                </td>
-                                <td>
-                                    @p.Price
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @p.Name
+                            </td>
+                            <td>
+                                @p.Price
+                            </td>
+                        </tr>
                         }
                     </table>
                 </div>
@@ -91,5 +94,17 @@
         </div>
     </div>
 
+    <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel-heading h2">
+            <a data-toggle="collapse" href="#clientsPanel" style="color:#333333; ">Iss2</a>
+        </div>
+        <div class="panel-collapse collapse" id="clientsPanel">
+            <div class="panel-body">
+                <div id="clientsContainer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
