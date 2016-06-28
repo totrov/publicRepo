@@ -4,18 +4,28 @@
 
 function printClients(data) {
     var clientsPlaceHolder = $("#clientsContainer").html("");
-    if (data.length === 0) {
+    var clientsViewModel = data.clientsViewModel;
+    if (clientsViewModel.length === 0) {
         clientsPlaceHolder.html("Клиенты не добавлены");
         return;
     }
-    var table = $('<table class="table"></table>');
-    table.append($("<tr><th>ФИО</th></tr>"));
+    var table = GenerateTableByData(clientsViewModel);
+    clientsPlaceHolder.append(table);
+
+    var pagination = $(".pagination");
+    var pageCount = data.pageCount;
+
+}
+
+function GenerateTableByData(data) {
+    var table = $('<table class="table table-bordered table-hover"></table>');
+    table.append($("<tr><th>ФИО</th><th>Cумма заказов</th></tr>"));
     data.forEach(function (client) {
         var tr = $("<tr></tr>");
-        tr.append("<th>" + client.Fio + "</th>");
+        tr.append("<th>" + client.fio + "</th>" + "<th>" + client.orderSum + "</th>");
         table.append(tr);
     });
-    clientsPlaceHolder.append(table);
+    return table;
 }
 
 function checkOutClients(pageNumber, clientsPerPage) {
